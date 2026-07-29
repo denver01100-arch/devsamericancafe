@@ -35,14 +35,12 @@ export default function Hero() {
 
   const play = ready || Boolean(reduced);
   const [currentImage, setCurrentImage] = useState(0);
-  const [hovered, setHovered] = useState(false);
   useEffect(() => {
-    if (!hovered) return;
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
-    }, 1200);
+    }, 1500); // change every 3 seconds
     return () => clearInterval(timer);
-  }, [hovered]);
+  }, []);
 
   return (
     <section
@@ -152,11 +150,6 @@ export default function Hero() {
             }}
             >
             <div
-              onMouseEnter={() => setHovered(true)}
-              onMouseLeave={() => {
-                setHovered(false);
-                setCurrentImage(0);
-              }}
               className="relative mx-auto aspect-4/5 w-full max-w-[34rem] overflow-hidden rounded-t-full border-2 border-navy bg-paper-2 graded cursor-pointer"
               >
               <motion.div
