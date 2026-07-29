@@ -6,7 +6,7 @@ const PHRASES = [
   "Cooked in front of you",
   "Original recipes since 1983",
   "Cowboy candy on everything",
-  "If it isn't messy, it isn't American",
+  "If it's not messy, It's not Dev's",
   "Hand-ground patties",
   "One chef, one counter",
 ];
