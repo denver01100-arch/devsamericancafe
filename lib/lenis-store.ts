@@ -10,12 +10,16 @@ export function getLenis() {
   return instance;
 }
 
-/** Freeze the page behind an overlay without losing scroll position. */
 export function lockScroll(locked: boolean) {
   if (typeof document === "undefined") return;
+
   document.body.dataset.locked = locked ? "true" : "false";
-  const lenis = getLenis();
-  if (!lenis) return;
-  if (locked) lenis.stop();
-  else lenis.start();
+
+  if (locked) {
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }
 }
