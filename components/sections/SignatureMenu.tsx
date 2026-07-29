@@ -17,7 +17,7 @@ export default function SignatureMenu() {
       <div className="shell">
         <SectionHeading
           eyebrow="The Menu"
-          index="02 / 07"
+          index="01 / 07"
           title="Six ways to leave here full."
           lead="Every recipe on this list was written in this kitchen. Pick a category — the whole card opens."
         />
