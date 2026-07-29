@@ -139,7 +139,7 @@ export default function Hero() {
 
           {/* The burger */}
           <motion.div
-            className="relative z-10 lg:col-span-5 lg:translate-x-8"
+            className="relative mt-8 md:mt-0 z-10 lg:col-span-5 lg:translate-x-8"
             style={{ y: plateY }}
             initial={{ opacity: 0, scale: 0.86, y: 60 }}
             animate={play ? { opacity: 1, scale: 1, y: 0 } : {}}
@@ -174,7 +174,7 @@ export default function Hero() {
             <Chip
               play={play}
               delay={START + 0.85}
-              className="left-0 top-[16%] panel-yellow"
+              className="left-2 top-[28%] md:left-0 md:top-[16%] panel-yellow"
               icon
             >
               Cooked in front of you
@@ -182,14 +182,14 @@ export default function Hero() {
             <Chip
               play={play}
               delay={START + 0.95}
-              className="-right-1 top-[46%] panel-navy"
+              className="right-2 top-[56%] md:-right-1 md:top-[46%] panel-navy"
             >
               Since 2016
             </Chip>
             <Chip
               play={play}
               delay={START + 1.05}
-              className="bottom-[8%] left-[6%] bg-paper text-navy"
+              className="bottom-4 left-1/2 -translate-x-1/2 md:left-[6%] md:translate-x-0 md:bottom-[8%] bg-paper text-navy"
             >
               Cowboy candy on everything
             </Chip>
@@ -235,7 +235,7 @@ function Chip({
 }) {
   return (
     <motion.span
-      className={`absolute z-10 flex items-center gap-2 rounded-full border-2 border-navy px-4 py-2.5 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.14em] shadow-[4px_4px_0_rgba(23,28,56,0.16)] ${className}`}
+      className={`absolute z-10 flex items-center gap-2 rounded-full border-2 border-navypx-3 py-2 text-[0.5rem]sm:px-3.5 sm:py-2 sm:text-[0.55rem]md:px-4 md:py-2.5 md:text-[0.6rem]font-mono font-semibold uppercase tracking-[0.14em]shadow-[4px_4px_0_rgba(23,28,56,0.16)]whitespace-nowrap${className}`}
       initial={{ opacity: 0, scale: 0.7, y: 14 }}
       animate={play ? { opacity: 1, scale: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: [0.2, 1.3, 0.4, 1], delay }}
