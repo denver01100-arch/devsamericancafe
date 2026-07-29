@@ -42,7 +42,7 @@ export default function Hero() {
       <div className="shell-wide relative">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-6">
           {/* Type */}
-          <motion.div className="lg:col-span-6 lg:pt-6" style={{ y: typeY }}>
+          <motion.div className="relative z-20 lg:col-span-7 lg:pt-6" style={{ y: typeY }}>
             <Line play={play} delay={START}>
               <span className="t-eyebrow">Golf Link Market · Mohali</span>
             </Line>
