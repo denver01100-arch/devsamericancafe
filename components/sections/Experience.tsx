@@ -51,7 +51,7 @@ export default function Experience() {
       <div className="shell">
         <SectionHeading
           eyebrow="The Experience"
-          index="03 / 07"
+          index="02 / 07"
           title="What a table here actually gets you."
           align="center"
           className="mx-auto max-w-3xl"
