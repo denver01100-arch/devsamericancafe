@@ -125,12 +125,12 @@ export default function Hero() {
           {/* The burger */}
           <motion.div
             <motion.div
-            className="relative lg:col-span-5 lg:ml-10"
-            style={{ y: plateY }}
-            initial={{ opacity: 0, scale: 0.86, y: 60 }}
-            animate={play ? { opacity: 1, scale: 1, y: 0 } : {}}
-            transition={{ duration: 1.3, ease: easeOutExpo, delay: START + 0.2 }}
-          >
+              className="relative lg:col-span-5 lg:ml-10"
+              style={{ y: plateY }}
+              initial={{ opacity: 0, scale: 0.86, y: 60 }}
+              animate={play ? { opacity: 1, scale: 1, y: 0 } : {}}
+              transition={{ duration: 1.3, ease: easeOutExpo, delay: START + 0.2 }}
+              >
             <div className="relative mx-auto aspect-4/5 w-full max-w-[34rem] overflow-hidden rounded-t-full border-2 border-navy bg-paper-2 graded">
               <Image
                 src="/images/hero.jpg"
