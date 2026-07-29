@@ -78,7 +78,7 @@ export default function About() {
       <div className="shell">
         <SectionHeading
           eyebrow="The Story"
-          index="01 / 07"
+          index="04 / 07"
           title="A kitchen with no back of house."
           lead="Four decades of American kitchens, two countries, and the same pair of hands now working the pass at Golf Link Market."
         />
