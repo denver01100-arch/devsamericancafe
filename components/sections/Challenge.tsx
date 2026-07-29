@@ -47,7 +47,7 @@ export default function Challenge() {
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-7">
             <Rise>
-              <span className="font-mono text-[0.6875rem] font-bold uppercase tracking-[0.26em] text-navy">The Challenge · 04 / 07</span>
+              <span className="font-mono text-[0.6875rem] font-bold uppercase tracking-[0.26em] text-navy">The Challenge · 03 / 07</span>
             </Rise>
             <h2 className="t-h1 mt-7 text-navy">
               <RevealWords text="The Empire State Burger Challenge" />
