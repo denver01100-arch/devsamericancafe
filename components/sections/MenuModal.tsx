@@ -112,6 +112,7 @@ export default function MenuModal({
                   • -webkit-overflow-scrolling:touch re-enables momentum on older iOS
               */}
               <div
+                data-lenis-prevent
                 className="min-h-0 h-full overflow-y-auto overscroll-contain touch-pan-y lg:col-span-7 px-[max(1.25rem,4vw)] py-8 lg:px-12"
                 style={{
                   WebkitOverflowScrolling: "touch",
