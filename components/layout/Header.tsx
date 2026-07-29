@@ -53,14 +53,6 @@ export default function Header() {
             className="group flex items-center gap-3"
             aria-label={`${site.name} — home`}
           >
-            <Image
-              src="/images/logo.png"
-              alt=""
-              width={566}
-              height={900}
-              className="h-9 w-auto transition-transform duration-700 group-hover:scale-105"
-              priority
-            />
             <span className="hidden font-display text-sm font-semibold uppercase tracking-[0.3em] text-navy sm:block">
               Dev&rsquo;s
             </span>
