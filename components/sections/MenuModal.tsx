@@ -16,10 +16,10 @@ export default function MenuModal({
   category: MenuCategory | null;
   onClose: () => void;
 }) {
-  useEffect(() => {
-    lockScroll(Boolean(category));
-    return () => lockScroll(false);
-  }, [category]);
+  //useEffect(() => {
+    //lockScroll(Boolean(category));
+    //return () => lockScroll(false);
+  //}, [category]);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -112,8 +112,10 @@ export default function MenuModal({
                   • -webkit-overflow-scrolling:touch re-enables momentum on older iOS
               */}
               <div
-                className="min-h-0 flex-1 overflow-y-scroll overscroll-contain px-[max(1.25rem,4vw)] py-8 lg:col-span-7 lg:px-12"
-                style={{ WebkitOverflowScrolling: "touch" }}
+                className="min-h-0 h-full overflow-y-auto overscroll-contain touch-pan-y lg:col-span-7 px-[max(1.25rem,4vw)] py-8 lg:px-12"
+                style={{
+                  WebkitOverflowScrolling: "touch",
+                  touchAction: "pan-y",}}
               >
                 {/* Blurb — mobile only (desktop shows it over the photo) */}
                 <p className="t-body mb-8 max-w-[46ch] lg:hidden">{category.blurb}</p>
