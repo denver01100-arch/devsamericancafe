@@ -124,7 +124,8 @@ export default function Hero() {
 
           {/* The burger */}
           <motion.div
-            className="relative lg:col-span-6"
+            <motion.div
+            className="relative lg:col-span-5 lg:ml-10"
             style={{ y: plateY }}
             initial={{ opacity: 0, scale: 0.86, y: 60 }}
             animate={play ? { opacity: 1, scale: 1, y: 0 } : {}}
