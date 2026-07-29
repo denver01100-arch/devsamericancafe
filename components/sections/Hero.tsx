@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Star } from "lucide-react";
 import { openingSummary, site } from "@/lib/site";
@@ -10,6 +10,14 @@ import { useIntro } from "@/components/layout/IntroProvider";
 import { MagneticLink } from "@/components/ui/Magnetic";
 
 const START = 0.12;
+
+const heroImages = [
+  "/images/hero.jpg",
+  "/images/burger2.jpg",
+  "/images/burger3.jpg",
+  "/images/burger4.jpg",
+  "/images/buger5.jpg",
+];
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -26,6 +34,15 @@ export default function Hero() {
   const typeY = useTransform(scrollYProgress, [0, 1], ["0%", reduced ? "0%" : "34%"]);
 
   const play = ready || Boolean(reduced);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [hovered, setHovered] = useState(false);
+  useEffect(() => {
+    if (!hovered) return;
+    const timer = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 1200);
+    return () => clearInterval(timer);
+  }, [hovered]);
 
   return (
     <section
@@ -134,15 +151,30 @@ export default function Hero() {
               delay: START + 0.2,
             }}
             >
-            <div className="relative mx-auto aspect-4/5 w-full max-w-[34rem] overflow-hidden rounded-t-full border-2 border-navy bg-paper-2 graded">
-              <Image
-                src="/images/hero.jpg"
-                alt="A stacked burger being carried to the table at Dev's American Cafe"
-                fill
-                priority
-                sizes="(max-width: 1024px) 92vw, 44vw"
-                className="object-cover"
-              />
+            <div
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => {
+                setHovered(false);
+                setCurrentImage(0);
+              }}
+              className="relative mx-auto aspect-4/5 w-full max-w-[34rem] overflow-hidden rounded-t-full border-2 border-navy bg-paper-2 graded cursor-pointer"
+              >
+              <motion.div
+                key={currentImage}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
+                className="absolute inset-0"
+                >
+                <Image
+                  src={heroImages[currentImage]}
+                  alt="Dev's American Cafe"
+                  fill
+                  priority
+                  sizes="(max-width:1024px)92vw,44vw"
+                  className="object-cover"
+                  />
+              </motion.div>
             </div>
 
             {/* Chips that orbit the plate */}
