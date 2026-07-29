@@ -24,6 +24,11 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       smoothWheel: true,
       touchMultiplier: 1.6,
       wheelMultiplier: 0.95,
+
+  // IMPORTANT
+      prevent: (node) => {
+        return !!node.closest("[data-lenis-prevent]");
+      },
     });
 
     setLenis(lenis);
