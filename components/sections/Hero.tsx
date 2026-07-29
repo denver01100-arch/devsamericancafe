@@ -64,7 +64,7 @@ export default function Hero() {
                   </Line>
                   <Line play={play} delay={START + 0.4}>
                     <span className="t-accent block pb-[0.55em] text-[clamp(1rem,1.8vw,1.45rem)] text-steel">
-                      no back of house
+                      "If it's not messy, It's not Dev's"
                     </span>
                   </Line>
                 </span>
