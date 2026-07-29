@@ -34,9 +34,9 @@
   --color-navy-2: #414868;
   --color-navy-3: #5f6480;
   --color-slate: #5f6480;
-
-  --font-display: "Bodoni Moda", "Didot", "Times New Roman", serif;
-  --font-accent: "Instrument Serif", "Bodoni Moda", Georgia, serif;
+   
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-accent: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Inter Tight", "Helvetica Neue", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
 
