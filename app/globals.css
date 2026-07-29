@@ -112,11 +112,11 @@ body[data-locked="true"] {
   /* ------------------------------------------------------------ Typography */
 
   .t-mega {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(3.2rem, 12.4vw, 12rem);
-    line-height: 0.87;
-    letter-spacing: -0.045em;
+     font-family: var(--font-display);
+     font-weight: 800;
+     font-size: clamp(3rem, 8vw, 8rem);
+     line-height: 0.9;
+     letter-spacing: -0.04em;
   }
 
   .t-h1 {
