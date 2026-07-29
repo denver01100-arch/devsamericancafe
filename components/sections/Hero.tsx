@@ -16,7 +16,7 @@ const heroImages = [
   "/images/burger2.jpg",
   "/images/burger3.jpg",
   "/images/burger4.jpg",
-  "/images/buger5.jpg",
+  "/images/burger5.jpg",
 ];
 
 export default function Hero() {
