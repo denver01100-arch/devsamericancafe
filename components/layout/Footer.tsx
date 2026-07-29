@@ -19,7 +19,7 @@ export default function Footer() {
               className="h-24 w-auto"
             />
             <p className="t-accent mt-8 max-w-[30ch] text-[clamp(1.25rem,2.2vw,1.7rem)] leading-[1.35] text-yellow">
-              If it isn&rsquo;t messy, it isn&rsquo;t American.
+              If it's not messy, It's not Dev's
             </p>
           </div>
 
