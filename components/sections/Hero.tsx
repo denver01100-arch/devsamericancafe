@@ -38,7 +38,7 @@ export default function Hero() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
-    }, 1500); // change every 3 seconds
+    }, 2500); // change every 3 seconds
     return () => clearInterval(timer);
   }, []);
 
@@ -150,7 +150,7 @@ export default function Hero() {
             }}
             >
             <div
-              className="relative mx-auto aspect-4/5 w-full max-w-[34rem] overflow-hidden rounded-t-full border-2 border-navy bg-paper-2 graded cursor-pointer"
+              className="relative mx-auto aspect-[4/5] w-[90%] md:w-full max-w-[34rem] overflow-hidden rounded-t-full border-2 border-navy bg-paper-2 graded cursor-pointer"
               >
               <motion.div
                 key={currentImage}
@@ -170,6 +170,18 @@ export default function Hero() {
               </motion.div>
             </div>
 
+            <div className="mt-4 flex flex-wrap justify-center gap-2 md:hidden">
+              <span className="rounded-full border-2 border-navy bg-yellow px-3 py-2 text-xs font-semibold uppercase">
+                ⭐ Cooked in Front of You
+              </span>
+
+              <span className="rounded-full bg-navy text-white px-3 py-2 text-xs font-semibold uppercase">
+                Since 2016
+              </span>
+              <span className="rounded-full border-2 border-navy bg-paper px-3 py-2 text-xs font-semibold uppercase">
+                Cowboy Candy
+              </span>
+            </div>
             {/* Chips that orbit the plate */}
             <Chip
               play={play}
@@ -235,8 +247,16 @@ function Chip({
 }) {
   return (
     <motion.span
-      className={`absolute z-10 flex items-center gap-2 rounded-full border-2 border-navypx-3 py-2 text-[0.5rem]sm:px-3.5 sm:py-2 sm:text-[0.55rem]md:px-4 md:py-2.5 md:text-[0.6rem]font-mono font-semibold uppercase tracking-[0.14em]shadow-[4px_4px_0_rgba(23,28,56,0.16)]whitespace-nowrap${className}`}
-      initial={{ opacity: 0, scale: 0.7, y: 14 }}
+      className={`absolute z-10 hidden md:flex items-center gap-2 rounded-full border-2 border-navy
+      px-4 py-2.5
+      font-mono
+      text-[0.6rem]
+      font-semibold
+      uppercase
+      tracking-[0.14em]
+      whitespace-nowrap
+      shadow-[4px_4px_0_rgba(23,28,56,0.16)]
+      ${className}`}
       animate={play ? { opacity: 1, scale: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: [0.2, 1.3, 0.4, 1], delay }}
     >
