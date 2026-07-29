@@ -15,10 +15,10 @@ export default function HomePage() {
     <>
       <Hero />
       <Ticker />
-      <About />
       <SignatureMenu />
       <Experience />
       <Challenge />
+      <About />
       <Chef />
       <Gallery />
       <CelebrityWall />
