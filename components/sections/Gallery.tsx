@@ -14,20 +14,6 @@ const SHOTS = Array.from({ length: 12 }, (_, i) => ({
 }));
 
 /** Column spans keep the masonry from settling into a plain grid. */
-const SPANS = [
-  "sm:col-span-3 sm:row-span-2",
-  "sm:col-span-3",
-  "sm:col-span-3 sm:row-span-2",
-  "sm:col-span-3",
-  "sm:col-span-3",
-  "sm:col-span-3 sm:row-span-2",
-  "sm:col-span-3 sm:row-span-2",
-  "sm:col-span-3",
-  "sm:col-span-3",
-  "sm:col-span-3 sm:row-span-2",
-  "sm:col-span-3",
-  "sm:col-span-3",
-];
 
 export default function Gallery() {
   const [index, setIndex] = useState<number | null>(null);
@@ -65,41 +51,45 @@ export default function Gallery() {
           lead="Shot in the room, on the boards we actually serve on."
         />
 
-        <div className="mt-16 grid auto-rows-[minmax(160px,22vw)] grid-cols-1 gap-4 sm:grid-cols-6 sm:gap-5 lg:grid-cols-12">
-          {SHOTS.map((shot, i) => (
-            <motion.button
-              key={shot.src}
-              type="button"
-              onClick={() => setIndex(i)}
-              data-cursor="View"
-              className={`group relative row-span-1 overflow-hidden border-2 border-navy bg-paper-2 ${SPANS[i]} lg:col-span-3`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewportOnce}
-              transition={{ duration: 0.8, ease: easeOutExpo, delay: (i % 4) * 0.06 }}
-              aria-label={`Open image ${i + 1} of ${SHOTS.length}`}
-            >
-              <Image
-                src={shot.src}
-                alt={shot.alt}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-cover transition-all duration-[1.3s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
-              />
-              <span
-                className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
-                style={{
-                  background:
-                    "linear-gradient(to top, rgba(247,181,0,0.8), transparent 55%)",
+
+        <div className="gallery-scroll mt-16 overflow-x-auto scroll-smooth pb-6">
+          <div className="flex w-max snap-x snap-mandatory gap-6 pr-8">
+            {SHOTS.map((shot, i) => (
+              <motion.button
+                key={shot.src}
+                type="button"
+                onClick={() => setIndex(i)}
+                data-cursor="View"
+                className="group relative h-[520px] w-[360px] shrink-0 snap-center overflow-hidden rounded-3xl border-2 border-navy bg-paper-2"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewportOnce}
+                transition={{
+                  duration: 0.8,
+                  ease: easeOutExpo,
+                  delay: i * 0.05,
                 }}
-              />
-              <span className="absolute bottom-4 left-5 font-mono text-[0.65rem] font-bold tracking-[0.2em] text-navy opacity-0 transition-opacity duration-700 group-hover:opacity-100">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-            </motion.button>
-          ))}
+              >
+                <Image
+                  src={shot.src}
+                  alt={shot.alt}
+                  fill
+                  sizes="360px"
+                  className="object-cover transition-all duration-700 group-hover:scale-110"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+                <div className="absolute bottom-6 left-6 flex items-center gap-3 opacity-0 transition-all duration-500 group-hover:opacity-100">
+                  <span className="font-mono text-xs uppercase tracking-[0.3em] text-white">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+              </motion.button>
+            ))}
+          </div>
         </div>
-      </div>
+      </div> {/* <-- closes shell-wide */}
 
       <AnimatePresence>
         {index !== null && (
