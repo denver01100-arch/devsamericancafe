@@ -22,7 +22,7 @@ export default function SignatureMenu() {
           lead="Every recipe on this list was written in this kitchen. Pick a category — the whole card opens."
         />
 
-        <ul className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-16 grid items-start gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {menu.map((category, i) => (
             <motion.li
               key={category.id}
@@ -35,7 +35,7 @@ export default function SignatureMenu() {
                 type="button"
                 onClick={() => setActive(category)}
                 data-cursor="Open"
-                className="card group block h-full w-full text-left"
+                className="card group flex h-full flex-col w-full text-left"
                 aria-haspopup="dialog"
               >
                 <div className="relative aspect-square overflow-hidden border-b-2 border-navy">
@@ -52,7 +52,7 @@ export default function SignatureMenu() {
                   </span>
                 </div>
 
-                <div className="bg-paper px-7 py-8 transition-all duration-500 group-hover:bg-[#fffdf8]">
+                <div className="flex flex-1 flex-col bg-paper px-7 py-8 transition-all duration-500 group-hover:bg-[#fffdf8]">
                   <p className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-ember">
                     {category.kicker}
                   </p>
