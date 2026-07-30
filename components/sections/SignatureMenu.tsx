@@ -47,28 +47,29 @@ export default function SignatureMenu() {
                 className="card group block h-full w-full text-left"
                 aria-haspopup="dialog"
               >
-                <div className={`relative overflow-hidden border-b-2 border-navy ${imageHeights[i]}`}>
+                <div className="relative h-[520px] overflow-hidden border-b-2 border-navy bg-black">
                   <Image
                     src={category.image}
                     alt={category.title}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.08]"
-                  />
-                  <span className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border-2 border-navy bg-yellow text-navy opacity-0 transition-all duration-500 group-hover:opacity-100">
-                    <ArrowUpRight size={16} strokeWidth={2} />
+                    sizes="(max-width:640px)100vw,(max-width:1024px)50vw,33vw"
+                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
+                  <span className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-navy opacity-0 transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100">
+                    <ArrowUpRight size={18} strokeWidth={2} />
                   </span>
                 </div>
 
-                <div className="bg-paper p-6 transition-colors duration-500 group-hover:bg-butter">
+                <div className="bg-paper px-7 py-8 transition-all duration-500 group-hover:bg-[#fffdf8]">
                   <p className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-ember">
                     {category.kicker}
                   </p>
-                  <h3 className="t-h3 mt-3 text-navy">{category.label}</h3>
-                  <p className="mt-3 text-[0.88rem] leading-[1.6] text-navy-2">
+                 <h3 className="mt-4 font-display text-[2.4rem] leading-none text-navy">{category.label}</h3>
+                  <p className="mt-5 text-base leading-8 text-slate-700">
                     {category.blurb}
                   </p>
-                  <span className="mt-5 flex items-center gap-2 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-navy">
+                  <span className="mt-8 flex items-center gap-3 font-mono text-xs tracking-[0.25em] uppercase text-navy">
                     See the card
                     <span className="h-px w-6 bg-navy transition-all duration-500 group-hover:w-10" />
                   </span>
