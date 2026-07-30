@@ -38,7 +38,7 @@ export default function SignatureMenu() {
                 className="card group block h-full w-full text-left"
                 aria-haspopup="dialog"
               >
-                <div className="relative h-[250px] sm:h-[280px] lg:h-[320px] overflow-hidden border-b-2 border-navy">
+                <div className="relative aspect-square overflow-hidden border-b-2 border-navy">
                   <Image
                     src={category.image}
                     alt={category.title}
