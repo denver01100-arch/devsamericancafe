@@ -12,6 +12,15 @@ import MenuModal from "./MenuModal";
 export default function SignatureMenu() {
   const [active, setActive] = useState<MenuCategory | null>(null);
 
+  const imageHeights = [
+  "h-[430px]",
+  "h-[500px]",
+  "h-[460px]",
+  "h-[430px]",
+  "h-[500px]",
+  "h-[460px]",
+];
+
   return (
     <section id="menu" className="band bg-sand lighting">
       <div className="shell">
@@ -38,7 +47,7 @@ export default function SignatureMenu() {
                 className="card group block h-full w-full text-left"
                 aria-haspopup="dialog"
               >
-                <div className="relative aspect-square overflow-hidden border-b-2 border-navy">
+                <div className={`relative overflow-hidden border-b-2 border-navy ${imageHeights[i]}`}>
                   <Image
                     src={category.image}
                     alt={category.title}
