@@ -35,10 +35,10 @@ export default function SignatureMenu() {
                 type="button"
                 onClick={() => setActive(category)}
                 data-cursor="Open"
-                className="card group flex h-full flex-col w-full text-left"
+                className="card group flex h-[700px] w-full flex-col text-left"
                 aria-haspopup="dialog"
               >
-                <div className="relative aspect-square overflow-hidden border-b-2 border-navy">
+                <div className="relative h-[430px] shrink-0 overflow-hidden border-b-2 border-navy">
                   <Image
                     src={category.image}
                     alt={category.title}
@@ -52,7 +52,7 @@ export default function SignatureMenu() {
                   </span>
                 </div>
 
-                <div className="flex flex-1 flex-col bg-paper px-7 py-8 transition-all duration-500 group-hover:bg-[#fffdf8]">
+                <div className="flex flex-1 flex-col bg-paper px-7 py-8">
                   <p className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-ember">
                     {category.kicker}
                   </p>
