@@ -131,7 +131,7 @@ export default function Header() {
                       <Link
                         href={item.href}
                         onClick={() => setOpen(false)}
-                        className="block py-2 font-display text-[clamp(2.1rem,10vw,3.4rem)] font-semibold leading-[1.05] tracking-tight text-navy"
+                        className="block py-3 font-display text-[clamp(2.5rem,11vw,4.2rem)] font-medium uppercase tracking-[0.06em] leading-none text-navy hover:text-ember transition-colors duration-500"
                       >
                         {item.label}
                       </Link>
