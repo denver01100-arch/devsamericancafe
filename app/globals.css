@@ -437,3 +437,11 @@ body[data-locked="true"] {
 footer .t-meta {
   color: #9aa0ba;
 }
+
+.gallery-scroll{
+  scrollbar-width:none;
+}
+
+.gallery-scroll::-webkit-scrollbar{
+  display:none;
+}
