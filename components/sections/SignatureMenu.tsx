@@ -35,7 +35,7 @@ export default function SignatureMenu() {
                 type="button"
                 onClick={() => setActive(category)}
                 data-cursor="Open"
-                className="card group flex h-[700px] w-full flex-col text-left"
+                className="card group flex h-[820px] w-full flex-col text-left"
                 aria-haspopup="dialog"
               >
                 <div className="relative h-[430px] shrink-0 overflow-hidden border-b-2 border-navy">
