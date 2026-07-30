@@ -53,7 +53,7 @@ export default function SignatureMenu() {
                     alt={category.title}
                     fill
                     sizes="(max-width:640px)100vw,(max-width:1024px)50vw,33vw"
-                    className="object-cover object-[center_-30px] transition-transform duration-700 ease-out group-hover:scale-105"
+                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
                   <span className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-navy opacity-0 transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100">
