@@ -63,8 +63,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="underline-slide py-2 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-navy-2 transition-colors duration-500 hover:text-navy"
-              >
+                className="underline-slide py-2 font-display text-[0.8rem] font-medium uppercase tracking-[0.18em] text-navy-2 transition-all duration-300 hover:text-ember"              >
                 {item.label}
               </Link>
             ))}
