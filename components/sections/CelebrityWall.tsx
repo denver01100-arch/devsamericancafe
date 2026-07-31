@@ -20,6 +20,8 @@ const HANG = [
   { rotate: 1.9, offset: 44 },
   { rotate: -1.2, offset: 6 },
   { rotate: 0.8, offset: 28 },
+  { rotate: -0.5, offset: 15 },
+  { rotate: 2.3, offset: 40 },
 ];
 
 export default function CelebrityWall() {
