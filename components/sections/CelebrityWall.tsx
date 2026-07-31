@@ -7,7 +7,7 @@ import { MoveHorizontal } from "lucide-react";
 import { easeOutExpo, viewportOnce } from "@/lib/motion";
 import { RevealWords, Rise } from "@/components/ui/Reveal";
 
-const FRAMES = Array.from({ length: 8 }, (_, i) => ({
+const FRAMES = Array.from({ length: 9 }, (_, i) => ({
   src: `/images/celeb-${i + 1}.jpg`,
   alt: `A photograph from Chef Dev's culinary journey, frame ${i + 1}`,
 }));
@@ -22,6 +22,7 @@ const HANG = [
   { rotate: 0.8, offset: 28 },
   { rotate: -0.5, offset: 15 },
   { rotate: 2.3, offset: 40 },
+  { rotate: -1.0, offset: 10 }
 ];
 
 export default function CelebrityWall() {
