@@ -7,7 +7,7 @@ import { MoveHorizontal } from "lucide-react";
 import { easeOutExpo, viewportOnce } from "@/lib/motion";
 import { RevealWords, Rise } from "@/components/ui/Reveal";
 
-const FRAMES = Array.from({ length: 6 }, (_, i) => ({
+const FRAMES = Array.from({ length: 8 }, (_, i) => ({
   src: `/images/celeb-${i + 1}.jpg`,
   alt: `A photograph from Chef Dev's culinary journey, frame ${i + 1}`,
 }));
