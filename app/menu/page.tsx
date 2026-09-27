@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Leaf, Star } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { formatPrice, inspirations, menu } from "@/lib/menu";
 import { openingSummary, site } from "@/lib/site";
 import { Rise } from "@/components/ui/Reveal";
@@ -26,18 +26,22 @@ export default function MenuPage() {
             Back home
           </Link>
 
-          <h1 className="t-h1 mt-12 text-navy">The Full Menu</h1>
+          <h1 className="t-h1 mt-12 text-navy">
+            The Full Menu
+          </h1>
+
           <p className="t-lead mt-8 max-w-[52ch]">
-            Original recipes, hand-ground patties and a helping of cowboy candy under nearly
-            everything. Cooked in front of you at Golf Link Market.
+            Original recipes, hand-ground patties and a helping of cowboy candy
+            under nearly everything. Cooked in front of you at Golf Link Market.
           </p>
 
           <div className="mt-12 flex flex-wrap gap-x-10 gap-y-4 border-t border-line pt-8">
-            <p className="t-meta">{openingSummary}</p>
-            <p className="t-meta text-navy-2">Prices in ₹ · subject to change</p>
-            <p className="t-meta text-navy-2 flex items-center gap-2">
-              <Leaf size={12} strokeWidth={1.6} className="text-steel" /> Vegetarian
-              <Star size={11} strokeWidth={1.6} className="ml-4 text-ember-2" /> Signature
+            <p className="t-meta">
+              {openingSummary}
+            </p>
+
+            <p className="t-meta text-navy-2">
+              Prices in ₹ · subject to change
             </p>
           </div>
         </div>
@@ -47,19 +51,30 @@ export default function MenuPage() {
         <section
           key={category.id}
           id={category.id}
-          className={`band ${ci % 2 === 0 ? "bg-sand" : "bg-cream"} lighting`}
-          style={{ paddingBlock: "clamp(4rem,8vw,7rem)" }}
+          className={`band ${
+            ci % 2 === 0 ? "bg-sand" : "bg-cream"
+          } lighting`}
+          style={{
+            paddingBlock: "clamp(4rem,8vw,7rem)",
+          }}
         >
           <div className="shell">
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
+              {/* Category information */}
               <div className="lg:col-span-4">
                 <div className="lg:sticky lg:top-28">
                   <Rise>
-                    <span className="t-eyebrow">{category.kicker}</span>
+                    <span className="t-eyebrow">
+                      {category.kicker}
+                    </span>
+
                     <h2 className="t-h1 mt-6 text-[clamp(2.2rem,5vw,3.6rem)] text-navy">
                       {category.title}
                     </h2>
-                    <p className="t-body mt-7 max-w-[40ch]">{category.blurb}</p>
+
+                    <p className="t-body mt-7 max-w-[40ch]">
+                      {category.blurb}
+                    </p>
                   </Rise>
 
                   <ParallaxImage
@@ -72,19 +87,30 @@ export default function MenuPage() {
                 </div>
               </div>
 
+              {/* Menu items */}
               <div className="lg:col-span-8">
                 {category.groups.map((group, gi) => (
-                  <div key={group.title} className={gi > 0 ? "mt-16" : ""}>
+                  <div
+                    key={group.title}
+                    className={gi > 0 ? "mt-16" : ""}
+                  >
+                    {/* Group heading */}
                     <div className="flex items-baseline gap-4">
                       <h3 className="font-mono text-[0.68rem] uppercase tracking-[0.24em] text-ember-2">
                         {group.title}
                       </h3>
+
                       <span className="h-px flex-1 bg-line" />
                     </div>
+
+                    {/* Group note */}
                     {group.note && (
-                      <p className="mt-3 text-sm italic text-slate">{group.note}</p>
+                      <p className="mt-3 text-sm italic text-slate">
+                        {group.note}
+                      </p>
                     )}
 
+                    {/* Items */}
                     <ul className="mt-7">
                       {group.items.map((item) => (
                         <li
@@ -93,25 +119,12 @@ export default function MenuPage() {
                         >
                           <Rise>
                             <div className="flex items-baseline gap-4">
-                              <h4 className="t-h3 flex items-center gap-2.5 text-navy">
+                              {/* Item name */}
+                              <h4 className="t-h3 flex-1 text-navy">
                                 {item.name}
-                                {item.veg && (
-                                  <Leaf
-                                    size={13}
-                                    strokeWidth={1.6}
-                                    className="text-steel"
-                                    aria-label="Vegetarian"
-                                  />
-                                )}
-                                {item.signature && (
-                                  <Star
-                                    size={12}
-                                    strokeWidth={1.6}
-                                    className="text-ember-2"
-                                    aria-label="Signature dish"
-                                  />
-                                )}
                               </h4>
+
+                              {/* Dotted line */}
                               <span
                                 className="h-px flex-1 self-end"
                                 style={{
@@ -120,13 +133,18 @@ export default function MenuPage() {
                                 }}
                                 aria-hidden
                               />
+
+                              {/* Price */}
                               <span className="whitespace-nowrap font-mono text-sm text-navy tabular-nums">
                                 {formatPrice(item.price)}
                               </span>
                             </div>
+
+                            {/* Description / price note */}
                             {(item.description || item.priceNote) && (
                               <p className="mt-2.5 max-w-[64ch] text-[0.92rem] leading-[1.65] text-navy-2/85">
                                 {item.description}
+
                                 {item.priceNote && (
                                   <span className="ml-1 text-slate">
                                     ({item.priceNote})
@@ -150,23 +168,34 @@ export default function MenuPage() {
       <section className="band bg-sand lighting">
         <div className="shell">
           <Rise>
-            <span className="t-eyebrow">Inspiration</span>
+            <span className="t-eyebrow">
+              Inspiration
+            </span>
+
             <h2 className="t-h1 mt-6 max-w-[20ch] text-navy">
               Some of this menu was ordered into existence.
             </h2>
+
             <p className="t-lead mt-8 max-w-[50ch]">
-              Regulars asked for something that wasn&rsquo;t on the card. It worked. It
-              stayed. Their names stayed with it.
+              Regulars asked for something that wasn&rsquo;t on the card. It
+              worked. It stayed. Their names stayed with it.
             </p>
           </Rise>
 
           <ul className="mt-14 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
             {inspirations.map((entry, i) => (
-              <li key={entry.name} className="bg-sand">
-                <Rise delay={(i % 3) * 0.06} className="h-full p-8">
+              <li
+                key={entry.name}
+                className="bg-sand"
+              >
+                <Rise
+                  delay={(i % 3) * 0.06}
+                  className="h-full p-8"
+                >
                   <p className="font-display text-[1.15rem] font-semibold leading-tight text-navy">
                     {entry.name}
                   </p>
+
                   <p className="mt-2 text-[0.9rem] leading-[1.6] text-navy-2/85">
                     and {entry.dish}
                   </p>
@@ -177,16 +206,27 @@ export default function MenuPage() {
         </div>
       </section>
 
+      {/* Visit section */}
       <section className="band bg-cream lighting">
         <div className="shell text-center">
           <h2 className="t-h2 mx-auto max-w-[22ch] text-navy">
             Come and eat it in the room it was written for.
           </h2>
+
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <a href={site.mapsPlace} target="_blank" rel="noopener noreferrer" className="btn btn-solid">
+            <a
+              href={site.mapsPlace}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-solid"
+            >
               Open in Google Maps
             </a>
-            <Link href="/#visit" className="btn">
+
+            <Link
+              href="/#visit"
+              className="btn"
+            >
               Opening hours
             </Link>
           </div>
