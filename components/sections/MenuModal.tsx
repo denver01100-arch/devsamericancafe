@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, Leaf, Star } from "lucide-react";
+import { X } from "lucide-react";
 import { formatPrice, type MenuCategory } from "@/lib/menu";
 import { easeInOutQuint, easeOutExpo } from "@/lib/motion";
 import { lockScroll } from "@/lib/lenis-store";
@@ -16,16 +16,18 @@ export default function MenuModal({
   category: MenuCategory | null;
   onClose: () => void;
 }) {
-  //useEffect(() => {
-    //lockScroll(Boolean(category));
-    //return () => lockScroll(false);
-  //}, [category]);
+  // useEffect(() => {
+  //   lockScroll(Boolean(category));
+  //   return () => lockScroll(false);
+  // }, [category]);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
     };
+
     window.addEventListener("keydown", onKey);
+
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
 
@@ -33,6 +35,7 @@ export default function MenuModal({
     <AnimatePresence>
       {category && (
         <div className="fixed inset-0 z-[85]">
+          {/* Background overlay */}
           <motion.button
             type="button"
             className="absolute inset-0 h-full w-full bg-navy/40 backdrop-blur-md"
@@ -44,6 +47,7 @@ export default function MenuModal({
             aria-label="Close menu"
           />
 
+          {/* Modal */}
           <motion.div
             role="dialog"
             aria-modal="true"
@@ -52,7 +56,10 @@ export default function MenuModal({
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
-            transition={{ duration: 0.85, ease: easeInOutQuint }}
+            transition={{
+              duration: 0.85,
+              ease: easeInOutQuint,
+            }}
           >
             {/* ── Ticket header (fixed, never scrolls) ── */}
             <div className="shrink-0 flex items-start justify-between gap-6 border-b-2 border-navy bg-yellow px-[max(1.25rem,4vw)] py-5 md:px-12">
@@ -60,8 +67,12 @@ export default function MenuModal({
                 <p className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-navy-2">
                   {category.kicker}
                 </p>
-                <h2 className="t-h2 mt-2 text-navy">{category.title}</h2>
+
+                <h2 className="t-h2 mt-2 text-navy">
+                  {category.title}
+                </h2>
               </div>
+
               <button
                 type="button"
                 onClick={onClose}
@@ -72,16 +83,19 @@ export default function MenuModal({
               </button>
             </div>
 
-            {/* ── Body (fills remaining height, desktop splits into 2 cols) ── */}
+            {/* ── Body ── */}
             <div className="grid min-h-0 flex-1 overflow-hidden lg:grid-cols-12">
-
-              {/* Photo panel — desktop only */}
+              {/* ── Photo panel — desktop only ── */}
               <div className="relative hidden lg:col-span-5 lg:block">
                 <motion.div
                   className="absolute inset-0 graded"
                   initial={{ scale: 1.14, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 1.3, ease: easeOutExpo, delay: 0.18 }}
+                  transition={{
+                    duration: 1.3,
+                    ease: easeOutExpo,
+                    delay: 0.18,
+                  }}
                 >
                   <Image
                     src={category.image}
@@ -91,6 +105,7 @@ export default function MenuModal({
                     className="object-cover"
                   />
                 </motion.div>
+
                 <div
                   className="absolute inset-0"
                   style={{
@@ -98,75 +113,77 @@ export default function MenuModal({
                       "linear-gradient(to top, rgba(23,28,56,0.88) 6%, rgba(23,28,56,0.18) 52%, transparent 100%)",
                   }}
                 />
+
                 <p className="absolute bottom-10 left-12 right-16 t-accent text-[1.2rem] leading-[1.45] text-cream">
                   {category.blurb}
                 </p>
               </div>
 
               {/* ── Scrollable items column ── */}
-              {/*
-                  Key fixes for mobile:
-                  • min-h-0 lets the flexbox child shrink below its content height
-                  • overflow-y-scroll (not auto) forces the scrollbar track on iOS
-                  • overscroll-contain stops the scroll event escaping to the page
-                  • -webkit-overflow-scrolling:touch re-enables momentum on older iOS
-              */}
               <div
                 data-lenis-prevent
                 className="min-h-0 h-full overflow-y-auto overscroll-contain touch-pan-y lg:col-span-7 px-[max(1.25rem,4vw)] py-8 lg:px-12"
                 style={{
                   WebkitOverflowScrolling: "touch",
-                  touchAction: "pan-y",}}
+                  touchAction: "pan-y",
+                }}
               >
-                {/* Blurb — mobile only (desktop shows it over the photo) */}
-                <p className="t-body mb-8 max-w-[46ch] lg:hidden">{category.blurb}</p>
+                {/* Blurb — mobile only */}
+                <p className="t-body mb-8 max-w-[46ch] lg:hidden">
+                  {category.blurb}
+                </p>
 
                 {category.groups.map((group, gi) => (
-                  <section key={group.title} className={gi > 0 ? "mt-12" : ""}>
+                  <section
+                    key={group.title}
+                    className={gi > 0 ? "mt-12" : ""}
+                  >
+                    {/* Group heading */}
                     <div className="flex items-baseline gap-4">
                       <h3 className="font-mono text-[0.68rem] uppercase tracking-[0.24em] text-ember">
                         {group.title}
                       </h3>
+
                       <span className="h-px flex-1 bg-line" />
                     </div>
 
+                    {/* Group note */}
                     {group.note && (
-                      <p className="mt-3 text-sm italic text-slate">{group.note}</p>
+                      <p className="mt-3 text-sm italic text-slate">
+                        {group.note}
+                      </p>
                     )}
 
+                    {/* Items */}
                     <ul className="mt-5">
                       {group.items.map((item, i) => (
                         <motion.li
                           key={item.name}
                           className="border-b border-line/60 py-4 last:border-0"
-                          initial={{ opacity: 0, y: 14 }}
-                          animate={{ opacity: 1, y: 0 }}
+                          initial={{
+                            opacity: 0,
+                            y: 14,
+                          }}
+                          animate={{
+                            opacity: 1,
+                            y: 0,
+                          }}
                           transition={{
                             duration: 0.55,
                             ease: easeOutExpo,
-                            delay: 0.25 + gi * 0.05 + i * 0.03,
+                            delay:
+                              0.25 +
+                              gi * 0.05 +
+                              i * 0.03,
                           }}
                         >
                           <div className="flex items-baseline gap-3">
+                            {/* Item name */}
                             <h4 className="t-h3 flex flex-1 flex-wrap items-center gap-2 text-navy">
                               {item.name}
-                              {item.veg && (
-                                <Leaf
-                                  size={13}
-                                  strokeWidth={1.6}
-                                  className="text-steel"
-                                  aria-label="Vegetarian"
-                                />
-                              )}
-                              {item.signature && (
-                                <Star
-                                  size={12}
-                                  strokeWidth={1.6}
-                                  className="text-ember"
-                                  aria-label="Signature dish"
-                                />
-                              )}
                             </h4>
+
+                            {/* Dotted line */}
                             <span
                               className="hidden h-px flex-1 self-end sm:block"
                               style={{
@@ -175,16 +192,22 @@ export default function MenuModal({
                               }}
                               aria-hidden
                             />
+
+                            {/* Price */}
                             <span className="ml-auto whitespace-nowrap font-mono text-sm font-semibold text-navy tabular-nums">
                               {formatPrice(item.price)}
                             </span>
                           </div>
 
+                          {/* Description / price note */}
                           {(item.description || item.priceNote) && (
                             <p className="mt-1.5 text-[0.88rem] leading-[1.6] text-navy-2">
                               {item.description}
+
                               {item.priceNote && (
-                                <span className="ml-1 text-slate">({item.priceNote})</span>
+                                <span className="ml-1 text-slate">
+                                  ({item.priceNote})
+                                </span>
                               )}
                             </p>
                           )}
@@ -194,14 +217,22 @@ export default function MenuModal({
                   </section>
                 ))}
 
+                {/* Bottom section */}
                 <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t-2 border-line pt-7">
-                  <p className="t-meta">Prices subject to change without prior notice</p>
-                  <Link href="/menu" className="btn" onClick={onClose}>
+                  <p className="t-meta">
+                    Prices subject to change without prior notice
+                  </p>
+
+                  <Link
+                    href="/menu"
+                    className="btn"
+                    onClick={onClose}
+                  >
                     See the full menu
                   </Link>
                 </div>
 
-                {/* Bottom breathing room so the last item clears the safe area on phones */}
+                {/* Bottom breathing room for mobile safe area */}
                 <div className="h-[env(safe-area-inset-bottom,1.5rem)]" />
               </div>
             </div>
